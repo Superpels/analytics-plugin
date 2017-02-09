@@ -1,22 +1,24 @@
 <?php
 /**
-* Plugin Name: 	Google Analytics
+* Plugin Name:	Google Analytics
 * Plugin URI: 	http://sauco-web.com/
 * Description: 	Para activar Google Analytics. Simplemente deja el plugin activo y Google Analytics recibirá datos
-* Version: 		1.1
-* Author: 		Antonio García-Saúco Iglesias
+* Version:	1.0
+* Author: 	Antonio García-Saúco Iglesias
 * Author URI: 	http://sauco-web.com/
 */
 
+// ==============================================
+//  Prevent Direct Access of this file
+// ==============================================
 
-// Impedimos que alguién pueda entrar directamente al archivo del plugin 1.1
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if this file is accessed directly
 
+// ==============================================
+//  The plugin
+// ==============================================
 
 add_action( 'wp_head', 'sauco_web_ga_script' );
-
 function sauco_web_ga_script() {
 	
 	if ( !is_user_logged_in() ) { //Solo coge datos si el usuario NO está logueado
@@ -27,8 +29,8 @@ function sauco_web_ga_script() {
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	
-	  ga('create', 'UA-XXXXXXXX-X', 'auto');
-	  ga('send', 'pageview');
+	ga('create', 'UA-XXXXXXXX-X', 'auto'); //Cambiar UA-XXXXXXXX-X por tu código de Google
+	ga('send', 'pageview');
 	</script>
 	<?php
 	}
